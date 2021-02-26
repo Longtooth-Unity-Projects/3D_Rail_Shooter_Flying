@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerInputHandler : MonoBehaviour, Inputs_3D_Rail_Shooter_Flying.IPlayerActions
+public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Shooter_Flying.IPlayerActions
 {
 
     [Tooltip("In meters per second")]
