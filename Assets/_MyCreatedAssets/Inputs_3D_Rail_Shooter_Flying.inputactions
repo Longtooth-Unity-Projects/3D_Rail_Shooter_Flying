@@ -6,18 +6,18 @@
             "id": "1e2fe2f9-c538-41dc-b48d-b971ce0ffd95",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "dadbeb0c-1daf-47b9-968a-f5da52169f09",
-                    "expectedControlType": "Vector2",
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "d75326f4-8e19-44ab-8cf7-e97c8b006202",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "AltMove",
-                    "type": "Value",
-                    "id": "1bf16f8e-ce6b-4504-9846-6da1c133c8d1",
-                    "expectedControlType": "Vector2",
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "042201e1-9f76-4969-94ac-c53c4e2171c9",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -30,10 +30,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "042201e1-9f76-4969-94ac-c53c4e2171c9",
-                    "expectedControlType": "Button",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "dadbeb0c-1daf-47b9-968a-f5da52169f09",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AltMove",
+                    "type": "Value",
+                    "id": "1bf16f8e-ce6b-4504-9846-6da1c133c8d1",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -173,34 +181,34 @@
                 },
                 {
                     "name": "",
-                    "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "4c623c45-678b-4880-9a55-7bd95d346d5b",
+                    "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Look",
+                    "groups": "Keyboard&Mouse;Touch",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
-                    "path": "<Pointer>/delta",
+                    "id": "64499d24-8525-4df6-aa11-fb5036c66fc9",
+                    "path": "<Pen>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Look",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
-                    "path": "<Joystick>/{Hatswitch}",
+                    "id": "77bcc93a-540c-4111-8f01-c766cc403eab",
+                    "path": "<Touchscreen>/touch*/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "Look",
+                    "groups": "Touch",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -313,6 +321,39 @@
                     "action": "AltMove",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Touch",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -397,6 +438,14 @@
                     "type": "PassThrough",
                     "id": "16a03d67-2fa8-4087-979a-4965dd9e36a2",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Look1",
+                    "type": "Value",
+                    "id": "0c7076fa-74cd-438b-8637-e438f1e9ee23",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -817,6 +866,39 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10c5c02b-4c85-46c5-aab7-b0ad4f27e154",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Look1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19374923-d7d4-4e0a-b410-e7c58e8714f6",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Touch",
+                    "action": "Look1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "129bf9d7-120f-42a3-9c76-ad37e7c9f0a5",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Look1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

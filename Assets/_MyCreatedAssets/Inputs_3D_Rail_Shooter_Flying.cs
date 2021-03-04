@@ -19,18 +19,18 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
             ""id"": ""1e2fe2f9-c538-41dc-b48d-b971ce0ffd95"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""dadbeb0c-1daf-47b9-968a-f5da52169f09"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""d75326f4-8e19-44ab-8cf7-e97c8b006202"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""AltMove"",
-                    ""type"": ""Value"",
-                    ""id"": ""1bf16f8e-ce6b-4504-9846-6da1c133c8d1"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""042201e1-9f76-4969-94ac-c53c4e2171c9"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -43,10 +43,18 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""042201e1-9f76-4969-94ac-c53c4e2171c9"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""dadbeb0c-1daf-47b9-968a-f5da52169f09"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AltMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""1bf16f8e-ce6b-4504-9846-6da1c133c8d1"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -186,34 +194,34 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""4c623c45-678b-4880-9a55-7bd95d346d5b"",
+                    ""path"": ""<Pointer>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Look"",
+                    ""groups"": ""Keyboard&Mouse;Touch"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8c8e490b-c610-4785-884f-f04217b23ca4"",
-                    ""path"": ""<Pointer>/delta"",
+                    ""id"": ""64499d24-8525-4df6-aa11-fb5036c66fc9"",
+                    ""path"": ""<Pen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""Look"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3e5f5442-8668-4b27-a940-df99bad7e831"",
-                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""id"": ""77bcc93a-540c-4111-8f01-c766cc403eab"",
+                    ""path"": ""<Touchscreen>/touch*/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Look"",
+                    ""groups"": ""Touch"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -326,6 +334,39 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                     ""action"": ""AltMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c8e490b-c610-4785-884f-f04217b23ca4"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e5f5442-8668-4b27-a940-df99bad7e831"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -410,6 +451,14 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                     ""type"": ""PassThrough"",
                     ""id"": ""16a03d67-2fa8-4087-979a-4965dd9e36a2"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look1"",
+                    ""type"": ""Value"",
+                    ""id"": ""0c7076fa-74cd-438b-8637-e438f1e9ee23"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -832,6 +881,39 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10c5c02b-4c85-46c5-aab7-b0ad4f27e154"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Look1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19374923-d7d4-4e0a-b410-e7c58e8714f6"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""Look1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""129bf9d7-120f-42a3-9c76-ad37e7c9f0a5"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Look1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -901,10 +983,11 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_AltMove = m_Player.FindAction("AltMove", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -917,6 +1000,7 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Look1 = m_UI.FindAction("Look1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -966,18 +1050,20 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_AltMove;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @Inputs_3D_Rail_Shooter_Flying m_Wrapper;
         public PlayerActions(@Inputs_3D_Rail_Shooter_Flying wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @AltMove => m_Wrapper.m_Player_AltMove;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -987,34 +1073,40 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @AltMove.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAltMove;
                 @AltMove.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAltMove;
                 @AltMove.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAltMove;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
                 @AltMove.started += instance.OnAltMove;
                 @AltMove.performed += instance.OnAltMove;
                 @AltMove.canceled += instance.OnAltMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -1033,6 +1125,7 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Look1;
     public struct UIActions
     {
         private @Inputs_3D_Rail_Shooter_Flying m_Wrapper;
@@ -1047,6 +1140,7 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Look1 => m_Wrapper.m_UI_Look1;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1086,6 +1180,9 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Look1.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLook1;
+                @Look1.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLook1;
+                @Look1.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLook1;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1120,6 +1217,9 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Look1.started += instance.OnLook1;
+                @Look1.performed += instance.OnLook1;
+                @Look1.canceled += instance.OnLook1;
             }
         }
     }
@@ -1171,10 +1271,11 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
     }
     public interface IPlayerActions
     {
+        void OnAim(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnAltMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1188,5 +1289,6 @@ public class @Inputs_3D_Rail_Shooter_Flying : IInputActionCollection, IDisposabl
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnLook1(InputAction.CallbackContext context);
     }
 }

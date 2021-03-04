@@ -12,7 +12,7 @@ public class PlayerInputHandlerUsingCode : MonoBehaviour
 
     //TODO replace this with dynamic clamp based on camera
     [SerializeField] float absoluteHorizontalClamp = 4.5f;
-    [SerializeField] float absoluteVerticalClamp = 3.3f;
+    //[SerializeField] float absoluteVerticalClamp = 3.3f;
 
     [SerializeField] private Inputs_3D_Rail_Shooter_Flying playerInput;
     private Vector2 moveVector;

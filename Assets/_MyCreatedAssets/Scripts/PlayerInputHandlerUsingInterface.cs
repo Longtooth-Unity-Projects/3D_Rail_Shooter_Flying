@@ -12,7 +12,7 @@ public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Sh
 
     //TODO replace this with dynamic clamp based on camera
     [SerializeField] float absoluteHorizontalClamp = 4.5f;
-    [SerializeField] float absoluteVerticalClamp = 3.3f;
+    //[SerializeField] float absoluteVerticalClamp = 3.3f;
 
 
     [SerializeField] private Inputs_3D_Rail_Shooter_Flying playerInput;
@@ -71,6 +71,11 @@ public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Sh
     public void OnFire(InputAction.CallbackContext context)
     {
         Debug.Log("OnFire!!!");
+    }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
     }
 }
 
