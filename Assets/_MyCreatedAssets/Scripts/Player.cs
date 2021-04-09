@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityStandardAssets.CrossPlatformInput;
+
 
 public class Player : MonoBehaviour
 {
+    [Header("Must Assign These Fields")]
+    [SerializeField] private GameObject[] projectileLaunchers;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform topTurret;
+    [SerializeField] private Transform TurretTopProjLaunchpointPort;
+    [SerializeField] private Transform TurretTopProjLaunchpointStarboard;
+
+    [Header("General Setup Settings")]
     [Tooltip("In meters per second")]
     [SerializeField] private float movementSpeed = 14f;
-
     //TODO replace this with dynamic clamp based on camera
-    [SerializeField] private float absoluteHorizontalClamp = 9.7f;
-    [SerializeField] private float absoluteVerticalClamp = 8.5f;
-
-    [SerializeField] private float positionPitchFactor = -5f;
-    [SerializeField] private float controlPitchFactor = -5f;
-
+    [Tooltip("Horizontal movement limit")]
+    [SerializeField] private float absoluteHorizontalClamp = 11.2f;
+    [Tooltip("Vertical movement limit")]
+    [SerializeField] private float absoluteVerticalClamp = 7.4f;
     [SerializeField] private float turretRotateSpeed = 1.0f;
     [SerializeField] private float turretFireDelay = 0.1f;
+
+    [Header("Position Modifiers")]
+    [SerializeField] private float positionPitchFactor = -1f;
+    [SerializeField] private float controlPitchFactor = -10f;
+    [SerializeField] private float positionYawFactor = 2f;
+    [SerializeField] private float controlRollFactor = -20f;
+
+
 
 
     //TODO public for debugging, make private before release
@@ -28,27 +41,35 @@ public class Player : MonoBehaviour
     //used to ensure same instance of move coroutine that is called during start phase is canceled during the cancel phase
     private Coroutine moveCoroutineReference;
     private Coroutine fireCoroutineReference;
-    private Vector2 moveVector;
+    private float analogBreakPoint = 0.1f;
+    private Vector2 throwVector;
 
 
-    //cached references
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private Transform topTurret;
-    [SerializeField] private Transform TurretTopProjLaunchpointPort;
-    [SerializeField] private Transform TurretTopProjLaunchpointStarboard;
+
+
+    //for holding instantiated objects such as projectiles
+    string containerName = "ContainerForRuntimeSpawns";
+    private GameObject container;
 
     private Camera mainCamera;
 
 
-    private void Awake()
+    //TODO these values are for testing only remove / replace for final
+    [SerializeField] private float aimPointDistance = 25f;
+
+
+
+
+
+    private void Start()
     {
         mainCamera = Camera.main;
+        container = GameObject.Find(containerName);
     }
-
-
     private void Update()
     {
-        updateVector = mainCamera.ScreenToWorldPoint(new Vector3(cursorVector.x, cursorVector.y, mainCamera.farClipPlane));
+        //updateVector = mainCamera.ScreenToWorldPoint(new Vector3(cursorVector.x, cursorVector.y, mainCamera.farClipPlane));
+        updateVector = mainCamera.ScreenToWorldPoint(new Vector3(cursorVector.x, cursorVector.y, aimPointDistance));
 
         MoveTurret();
     }
@@ -65,9 +86,9 @@ public class Player : MonoBehaviour
 
         //no need to calculate gradual rotation for this, just used for testing
         //TODO remove this when testing complete
-        topTurret.localRotation = Quaternion.LookRotation(updateVector);
+        //topTurret.localRotation = Quaternion.LookRotation(updateVector);
 
-        //topTurret.LookAt(updateVector);   //points forward vector to look at target
+        topTurret.LookAt(updateVector);   //points forward vector to look at target
 
         Debug.DrawLine(topTurret.position, aimVector, Color.green);
         Debug.DrawLine(topTurret.position, updateVector, Color.blue);
@@ -103,8 +124,8 @@ public class Player : MonoBehaviour
         {
             while (true)
             {
-                Instantiate(projectile, TurretTopProjLaunchpointPort.position, TurretTopProjLaunchpointPort.rotation).SetActive(true);
-                Instantiate(projectile, TurretTopProjLaunchpointStarboard.position, TurretTopProjLaunchpointStarboard.rotation).SetActive(true);
+                Instantiate(projectile, TurretTopProjLaunchpointPort.position, TurretTopProjLaunchpointPort.rotation, container.transform).SetActive(true);
+                Instantiate(projectile, TurretTopProjLaunchpointStarboard.position, TurretTopProjLaunchpointStarboard.rotation, container.transform).SetActive(true);
 
                 yield return new WaitForSeconds(turretFireDelay);
             }
@@ -120,8 +141,8 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveVector = context.ReadValue<Vector2>();
-        Debug.Log("OnMove context:  " + context.phase.ToString() + " Value: " + moveVector.ToString());
+        throwVector = context.ReadValue<Vector2>();
+        Debug.Log("OnMove context:  " + context.phase.ToString() + " Value: " + throwVector.ToString());
 
         switch (context.phase)
         {
@@ -137,7 +158,8 @@ public class Player : MonoBehaviour
                 StopCoroutine(moveCoroutineReference);
                 //TODO see if we can make the return to no rotation gradual
                 //need to reset rotation as method is not called in update
-                transform.localRotation = Quaternion.Euler(transform.localPosition.y * positionPitchFactor, transform.localRotation.y, transform.localRotation.z);
+                //TODO this was part of the ship roation code, need to fix this
+                //transform.localRotation = Quaternion.Euler(transform.localPosition.y * positionPitchFactor, transform.localRotation.y, transform.localRotation.z);
                 break;
             default:
                 break;
@@ -148,19 +170,20 @@ public class Player : MonoBehaviour
         {
             while (true)
             {
-                Debug.Log("Move Player Coroutine Vector Value" + moveVector.ToString());
-                float xOffset = moveVector.x * movementSpeed * Time.deltaTime;
-                float yOffset = moveVector.y * movementSpeed * Time.deltaTime;
+                Debug.Log("Move Player Coroutine Vector Value" + throwVector.ToString());
+                float xOffset = throwVector.x * movementSpeed * Time.deltaTime;
+                float yOffset = throwVector.y * movementSpeed * Time.deltaTime;
 
                 float newXPos = Mathf.Clamp(transform.localPosition.x + xOffset, -absoluteHorizontalClamp, absoluteHorizontalClamp);
                 float newYPos = Mathf.Clamp(transform.localPosition.y + yOffset, -absoluteVerticalClamp, absoluteVerticalClamp);
 
-                //change rotation so ship is not alway ponted to center of horizon
-                float pitch = transform.localPosition.y * positionPitchFactor + moveVector.y * controlPitchFactor;
-                float yaw = 0f;
-                float roll = 0f;
-
                 transform.localPosition = new Vector3(newXPos, newYPos, transform.localPosition.z);
+
+                //change rotation so ship is not alway ponted to center of horizon
+                float pitch = transform.localPosition.y * positionPitchFactor + (throwVector.y * controlPitchFactor);
+                float yaw = transform.localPosition.x * positionYawFactor;
+                float roll = throwVector.x * controlRollFactor;
+
                 transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
 
                 yield return new WaitForEndOfFrame();
@@ -171,7 +194,7 @@ public class Player : MonoBehaviour
 
     public void OnAltMove(InputAction.CallbackContext context)
     {
-        Debug.Log("Alt Move context:  " + context.phase.ToString() + " Value: " + moveVector.ToString());
+        Debug.Log("Alt Move context:  " + context.phase.ToString() + " Value: " + throwVector.ToString());
     }
 
 
