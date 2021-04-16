@@ -14,22 +14,15 @@ public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Sh
     //[SerializeField] float absoluteVerticalClamp = 3.3f;
 
 
-    [SerializeField] private Inputs_3D_Rail_Shooter_Flying playerInput;
+    [SerializeField] private Inputs_3D_Rail_Shooter_Flying controls;
     private Vector2 moveVector;
 
 
     private void OnEnable()
     {
         //register function to handle fire to performed event
-        playerInput.Player.SetCallbacks(this); //need interface Inputs_3D_Rail_Shooter_Flying.IPlayerActions
-        playerInput.Player.Enable();
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
+        controls.Player.SetCallbacks(this); //need interface Inputs_3D_Rail_Shooter_Flying.IPlayerActions
+        controls.Player.Enable();
     }
 
     // Update is called once per frame
@@ -47,7 +40,7 @@ public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Sh
     private void OnDisable()
     {
         //degister function to handle fire to performed event
-        playerInput.Player.Disable();
+        controls.Player.Disable();
     }
 
 

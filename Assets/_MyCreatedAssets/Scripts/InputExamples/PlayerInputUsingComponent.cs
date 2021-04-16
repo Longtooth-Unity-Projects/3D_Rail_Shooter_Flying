@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class Player : MonoBehaviour
+public class PlayerInputUsingComponent : MonoBehaviour
 {
     [Header("Must Assign These Fields")]
     [SerializeField] private GameObject[] projectileLaunchers;
