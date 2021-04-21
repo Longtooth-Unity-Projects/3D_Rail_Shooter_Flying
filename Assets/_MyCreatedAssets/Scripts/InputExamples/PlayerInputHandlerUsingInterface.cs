@@ -21,7 +21,12 @@ public class PlayerInputHandlerUsingInterface : MonoBehaviour, Inputs_3D_Rail_Sh
     private void OnEnable()
     {
         //register function to handle fire to performed event
-        controls.Player.SetCallbacks(this); //need interface Inputs_3D_Rail_Shooter_Flying.IPlayerActions
+        if (controls == null)
+        {
+            controls = new Inputs_3D_Rail_Shooter_Flying();
+            controls.Player.SetCallbacks(this);     //need interface Inputs_3D_Rail_Shooter_Flying.IPlayerActions
+        }
+
         controls.Player.Enable();
     }
 

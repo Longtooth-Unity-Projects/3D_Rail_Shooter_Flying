@@ -28,6 +28,8 @@ public class PlayerInputHandlerUsingCode : MonoBehaviour
         playerInput.Player.Fire.performed += HandleFire;
         playerInput.Player.Move.performed += HandleMove;
         playerInput.Player.AltMove.performed += AltMove;
+
+        playerInput.Player.Enable();
     }
 
 
